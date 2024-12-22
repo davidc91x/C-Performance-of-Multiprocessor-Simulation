@@ -1,0 +1,535 @@
+﻿Entrada comentada:
+//hacemos el cin del cluster i la area de espera
+proc1 100 proc2 100 proc3 100 * * proc4 100 * * proc5 100 proc6
+100 * * pro7 100 * *
+3
+1
+2
+3
+//imprimimos estructura cluster para luego compararla con modificaciones futuras
+iec
+//añadimos procesos para probar el compactar
+app proc5 99 10 15
+app proc5 98 1 1
+app proc5 97 10 15
+app proc5 96 37 20
+app proc5 95 3 20
+app proc5 94 2 1
+ipro proc5
+app proc5 93 20 1
+app proc5 92 15 20    
+//vemos como queda proc5,avanzamos 1 y volvemos a ver como queda
+ipro proc5
+at 1
+ipro proc5
+// compactamos cluster y miramos si lo ha hecho bien
+cmc
+ipro proc5
+// prueba de baja
+bpp proc5 95
+//probamos a enviar procesos sin procesos en el area de espera
+epc 10
+//prueba de ipc
+ipc
+//vemos que area de espera vacia y metemos varios procesos en diferentes //prioridades
+iae
+ape 2 90 1000 1       
+ape 2 89 1000 1     
+ape 2 88 1000 1  
+ape 2 87 1000 1
+ape 2 86 10 1
+ape 2 85 10 1
+ape 2 85 99 1	
+ape 2 84 99 1
+ape 3 100 1000 1
+ape 3 80 10 1
+//revisamos area de espera y intentamos enviar 30 procesos al cluster
+iae
+epc 30
+//revisamos los procesadores del cluster y el area de espera para ver si se han  //enviado bien
+ipc
+iae
+//prueba imprimir prioridad
+ipri 3
+//avanzamos una unidad de tiempo para eliminar varios procesos y probar el //compactar procesador
+ipro proc5
+cmp proc5
+//comprobamos que haya funcionado
+ipc
+//prueba de añadir prioridad
+ap 4
+//prueba de baja prioridad
+bp 1
+//comprovamos
+iae
+//prueba configurar cluster
+cc 
+proc1 1 proc2 2 * * proc3 3 * *
+//comprovamos que se modifique el cluster
+iec
+mc proc2
+//prueba sin errores de modificar cluster 
+proc4 4 * *
+//comprobamos que se modifique el cluster
+iec
+fin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Entrada sin comentar:
+proc1 100 proc2 100 proc3 100 * * proc4 100 * * proc5 100 proc6
+100 * * pro7 100 * *
+3
+1
+2
+3
+iec
+app proc5 99 10 15
+app proc5 98 1 1
+app proc5 97 10 15
+app proc5 96 37 20
+app proc5 95 3 20
+app proc5 94 2 1
+ipro proc5
+app proc5 93 20 1
+app proc5 92 15 20    
+ipro proc5
+at 1
+ipro proc5
+cmc
+ipro proc5
+bpp proc5 95
+epc 10
+ipc
+iae
+ape 2 90 1000 1       
+ape 2 89 1000 1     
+ape 2 88 1000 1  
+ape 2 87 1000 1
+ape 2 86 10 1
+ape 2 85 10 1
+ape 2 85 99 1
+ape 2 84 99 1
+ape 3 100 1000 1
+ape 3 80 10 1
+iae
+epc 30
+ipc
+iae
+ipri 3
+ipro proc5
+cmp proc5
+ipc
+ap 4
+bp 1
+iae
+cc 
+proc1 1 proc2 2 * * proc3 3 * *
+iec
+mc proc2
+proc4 4 * *
+iec
+fin
+
+
+
+
+
+
+
+
+
+
+Salida comentada:
+// vemos que iec funciona para compararlo con futuros iec
+#iec
+(proc1(proc2(proc3  )(proc4  ))(proc5(proc6  )(pro7  )))
+#app proc5 99
+#app proc5 98
+#app proc5 97
+#app proc5 96
+#app proc5 95
+#app proc5 94
+#ipro proc5
+0 99 10 15
+10 98 1 1
+11 97 10 15
+21 96 37 20
+58 95 3 20
+61 94 2 1
+#app proc5 93
+#app proc5 92
+#ipro proc5
+0 99 10 15
+10 98 1 1
+11 97 10 15
+21 96 37 20
+58 95 3 20
+61 94 2 1
+63 93 20 1
+83 92 15 20
+#at 1
+// Vemos como se eliminan todos los procesos que duran 1
+#ipro proc5
+0 99 10 14
+11 97 10 14
+21 96 37 19
+58 95 3 19
+83 92 15 19
+#cmc
+// Vemos como la memoria del procesador esta ahora compactada y no hay espacios  // entre procesos
+#ipro proc5
+0 99 10 14
+10 97 10 14
+20 96 37 19
+57 95 3 19
+60 92 15 19
+#bpp proc5 95
+#epc 10
+//Vemos que no se han enviado procesos, ya que el area de espera es vacia
+#ipc
+pro7
+proc1
+proc2
+proc3
+proc4
+proc5
+0 99 10 14
+10 97 10 14
+20 96 37 19
+60 92 15 19
+proc6
+#iae
+1
+0 0
+2
+0 0
+3
+0 0
+#ape 2 90
+#ape 2 89
+#ape 2 88
+#ape 2 87
+#ape 2 86
+#ape 2 85
+#ape 2 85
+error: ya existe proceso
+#ape 2 84
+#ape 3 100
+#ape 3 80
+#iae
+1
+0 0
+2
+90 1000 1
+89 1000 1
+88 1000 1
+87 1000 1
+86 10 1
+85 10 1
+84 99 1
+0 0
+3
+100 1000 1
+80 10 1
+0 0
+#epc 30
+//los procesos 90, 89, 88, 87,100 no se pueden colocar asi que son rechazados
+//el proceso 86 y 85 se colocan en el final del proc5 ya que primero hay un //espacio de tamaño 25 libre y luego de 15 y no hay otro espacio de tamaño  //mas pequeño. El proceso 84 se coloca en el proc1, ya que hay varios empatos de //tamaño de espacio pero el proc1 es la raiz asi que gana la comparación por //niveles. El proceso 80 se coloca en el proc2 ya que vuelve a haber otro empate //de tamaño de espacios y empatan a niveles proc2 y proc3 pero proc2 esta   //mas a la izquierda. 
+#ipc
+pro7
+proc1
+0 84 99 1
+proc2
+0 80 10 1
+proc3
+proc4
+proc5
+0 99 10 14
+10 97 10 14
+20 96 37 19
+60 92 15 19
+75 86 10 1
+85 85 10 1
+proc6
+#iae
+1
+0 0
+2
+90 1000 1
+89 1000 1
+88 1000 1
+87 1000 1
+3 4
+3
+100 1000 1
+1 1
+#ipri 3
+100 1000 1
+1 1
+#ipro proc5
+0 99 10 14
+10 97 10 14
+20 96 37 19
+60 92 15 19
+75 86 10 1
+85 85 10 1
+#cmp proc5
+//Vemos como comprimir procesador también funciona, antes habia un hueco de 3 de //tamaño y ahora no hay ningun hueco en proc5. Los otros procesadores no han //sido modificados
+#ipc
+pro7
+proc1
+0 84 99 1
+proc2
+0 80 10 1
+proc3
+proc4
+proc5
+0 99 10 14
+10 97 10 14
+20 96 37 19
+57 92 15 19
+72 86 10 1
+82 85 10 1
+proc6
+#ap 4
+#bp 1
+//vemos alta prioridad y baja prioridad funcionan
+#iae
+2
+90 1000 1
+89 1000 1
+88 1000 1
+87 1000 1
+3 4
+3
+100 1000 1
+1 1
+4
+0 0
+#cc
+// el cluster cambia y iec sigue funcionando
+#iec
+(proc1(proc2  )(proc3  ))
+#mc proc2
+// modificamos el cluster cambiando proc2 por un arbol formado solo por   //proc4 y vemos que iec sigue funcionando
+#iec
+(proc1(proc4  )(proc3  ))
+
+
+
+
+
+
+
+Salida sin comentar:
+#iec
+(proc1(proc2(proc3  )(proc4  ))(proc5(proc6  )(pro7  )))
+#app proc5 99
+#app proc5 98
+#app proc5 97
+#app proc5 96
+#app proc5 95
+#app proc5 94
+#ipro proc5
+0 99 10 15
+10 98 1 1
+11 97 10 15
+21 96 37 20
+58 95 3 20
+61 94 2 1
+#app proc5 93
+#app proc5 92
+#ipro proc5
+0 99 10 15
+10 98 1 1
+11 97 10 15
+21 96 37 20
+58 95 3 20
+61 94 2 1
+63 93 20 1
+83 92 15 20
+#at 1
+#ipro proc5
+0 99 10 14
+11 97 10 14
+21 96 37 19
+58 95 3 19
+83 92 15 19
+#cmc
+#ipro proc5
+0 99 10 14
+10 97 10 14
+20 96 37 19
+57 95 3 19
+60 92 15 19
+#bpp proc5 95
+#epc 10
+#ipc
+pro7
+proc1
+proc2
+proc3
+proc4
+proc5
+0 99 10 14
+10 97 10 14
+20 96 37 19
+60 92 15 19
+proc6
+#iae
+1
+0 0
+2
+0 0
+3
+0 0
+#ape 2 90
+#ape 2 89
+#ape 2 88
+#ape 2 87
+#ape 2 86
+#ape 2 85
+#ape 2 85
+error: ya existe proceso
+#ape 2 84
+#ape 3 100
+#ape 3 80
+#iae
+1
+0 0
+2
+90 1000 1
+89 1000 1
+88 1000 1
+87 1000 1
+86 10 1
+85 10 1
+84 99 1
+0 0
+3
+100 1000 1
+80 10 1
+0 0
+#epc 30
+#ipc
+pro7
+proc1
+0 84 99 1
+proc2
+0 80 10 1
+proc3
+proc4
+proc5
+0 99 10 14
+10 97 10 14
+20 96 37 19
+60 92 15 19
+75 86 10 1
+85 85 10 1
+proc6
+#iae
+1
+0 0
+2
+90 1000 1
+89 1000 1
+88 1000 1
+87 1000 1
+3 4
+3
+100 1000 1
+1 1
+#ipri 3
+100 1000 1
+1 1
+#ipro proc5
+0 99 10 14
+10 97 10 14
+20 96 37 19
+60 92 15 19
+75 86 10 1
+85 85 10 1
+#cmp proc5
+#ipc
+pro7
+proc1
+0 84 99 1
+proc2
+0 80 10 1
+proc3
+proc4
+proc5
+0 99 10 14
+10 97 10 14
+20 96 37 19
+57 92 15 19
+72 86 10 1
+82 85 10 1
+proc6
+#ap 4
+#bp 1
+#iae
+2
+90 1000 1
+89 1000 1
+88 1000 1
+87 1000 1
+3 4
+3
+100 1000 1
+1 1
+4
+0 0
+#cc
+#iec
+(proc1(proc2  )(proc3  ))
+#mc proc2
+#iec
+(proc1(proc4  )(proc3  ))

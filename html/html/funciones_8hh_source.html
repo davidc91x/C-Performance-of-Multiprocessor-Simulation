@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Practica: Fitxer de Codi funciones.hh</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Practica
+   &#160;<span id="projectnumber">Simulación del rendimiento de procesadores interconectados</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generat per Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">funciones.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="funciones_8hh.html">Veure la documentació d'aquest fitxer.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef FUNCIONES</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define FUNCIONES</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Procesador_8hh.html">Procesador.hh</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Pri_8hh.html">Pri.hh</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef NO_DIAGRAM</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;BinTree.hh&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="funciones_8hh.html#ab3927023175c3a4a2f3610724bbf288e">   18</a></span>&#160;<span class="keyword">typedef</span> BinTree&lt;string&gt; <a class="code" href="funciones_8hh.html#ab3927023175c3a4a2f3610724bbf288e">clu</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="funciones_8hh.html#a67a958d8d026e7a87132020209a11a0c">   19</a></span>&#160;<span class="keyword">typedef</span> map&lt;string,Pri&gt; <a class="code" href="funciones_8hh.html#a67a958d8d026e7a87132020209a11a0c">Area</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="funciones_8hh.html#a02a2ab817362d27eade1a886b9c9c663">   25</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#a02a2ab817362d27eade1a886b9c9c663">modificarrecursivo</a>(<a class="code" href="funciones_8hh.html#ab3927023175c3a4a2f3610724bbf288e">clu</a>&amp; Cluster, map&lt;string,Procesador&gt;&amp; pr,<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; s, <span class="keywordtype">int</span> ni, <span class="keywordtype">string</span> iz, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; comando);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="funciones_8hh.html#a135643cf0b4d5cdca6e890cb100099b4">   31</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#a135643cf0b4d5cdca6e890cb100099b4">configurar_cluster</a>(<a class="code" href="funciones_8hh.html#ab3927023175c3a4a2f3610724bbf288e">clu</a>&amp; Cluster, map&lt;string,Procesador&gt;&amp; pr, <span class="keywordtype">int</span> n, <span class="keywordtype">string</span> i);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="funciones_8hh.html#adfbb2562c55bdc15baab315dd4873665">   37</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#adfbb2562c55bdc15baab315dd4873665">modificar_cluster</a>(<a class="code" href="funciones_8hh.html#ab3927023175c3a4a2f3610724bbf288e">clu</a>&amp; Cluster, map&lt;string,Procesador&gt;&amp; pr, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; comando);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="funciones_8hh.html#a8618450f11e21b5255adce3d38d5f145">   43</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#a8618450f11e21b5255adce3d38d5f145">alta_prioridad</a>(<a class="code" href="funciones_8hh.html#a67a958d8d026e7a87132020209a11a0c">Area</a>&amp; areap, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; comando);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="funciones_8hh.html#a34a3d004beacbd39c3cbbe6dbb0884a9">   49</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#a34a3d004beacbd39c3cbbe6dbb0884a9">alta_prioridad2</a>(<a class="code" href="funciones_8hh.html#a67a958d8d026e7a87132020209a11a0c">Area</a>&amp; areap, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; s);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="funciones_8hh.html#a99efcc0ea55bbf2d5584f2aec5c26cbd">   55</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#a99efcc0ea55bbf2d5584f2aec5c26cbd">baja_prioridad</a>(<a class="code" href="funciones_8hh.html#a67a958d8d026e7a87132020209a11a0c">Area</a>&amp; areap,<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; comando);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="funciones_8hh.html#a229a34c9c598ce0522d9b24eeba12c8a">   63</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#a229a34c9c598ce0522d9b24eeba12c8a">alta_proceso_espera</a>(<a class="code" href="funciones_8hh.html#a67a958d8d026e7a87132020209a11a0c">Area</a>&amp; areap,<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; comando);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="funciones_8hh.html#aaac064cafcd97cec3c495bcad4bb24a4">   69</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#aaac064cafcd97cec3c495bcad4bb24a4">alta_proceso_procesador</a>(map&lt;string,Procesador&gt;&amp; pr, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; comando);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="funciones_8hh.html#aa9a40697b57db45c4a5374ec5b53738e">   76</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#aa9a40697b57db45c4a5374ec5b53738e">baja_proceso_procesador</a>(map&lt;string,Procesador&gt;&amp; pr, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; comando);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="funciones_8hh.html#a57696e4b76fb2a4cc2d5d54ddb0ac9d7">   82</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#a57696e4b76fb2a4cc2d5d54ddb0ac9d7">enviar_procesos_cluster</a>(map&lt;string,Procesador&gt;&amp; pr,<a class="code" href="funciones_8hh.html#a67a958d8d026e7a87132020209a11a0c">Area</a>&amp; areap);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="funciones_8hh.html#af165f991c8c0a18b6eef21b38a180eba">   89</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#af165f991c8c0a18b6eef21b38a180eba">avanzar_tiempo</a>(map&lt;string,Procesador&gt;&amp; pr, <span class="keyword">const</span> <span class="keywordtype">int</span>&amp; t);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="funciones_8hh.html#a86fae20432ab0d245952e64f195bbb80">   95</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#a86fae20432ab0d245952e64f195bbb80">imprimir_prioridad</a>(<span class="keyword">const</span> <a class="code" href="funciones_8hh.html#a67a958d8d026e7a87132020209a11a0c">Area</a>&amp; areap, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; comando);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="funciones_8hh.html#a22a7f6d6c93bb67fe788a9e2a86b55ef">  101</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#a22a7f6d6c93bb67fe788a9e2a86b55ef">imprimir_area_espera</a>(<span class="keyword">const</span> <a class="code" href="funciones_8hh.html#a67a958d8d026e7a87132020209a11a0c">Area</a>&amp; areap);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="funciones_8hh.html#acab70e06c3b2bbe9a3da394419b1f1a5">  107</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#acab70e06c3b2bbe9a3da394419b1f1a5">imprimir_procesador</a>(<span class="keyword">const</span> map&lt;string,Procesador&gt;&amp; pr, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; comando);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="funciones_8hh.html#a906e2f98771bbb25ea08261b59570062">  113</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#a906e2f98771bbb25ea08261b59570062">imprimir_procesadores_cluster</a>(<span class="keyword">const</span> map&lt;string,Procesador&gt;&amp; pr);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="funciones_8hh.html#ab640dc24274481d23a1a0a7b5167d32b">  119</a></span>&#160;<span class="keywordtype">string</span> <a class="code" href="funciones_8hh.html#ab640dc24274481d23a1a0a7b5167d32b">imprimir_estructura_cluster</a>(<span class="keyword">const</span> <a class="code" href="funciones_8hh.html#ab3927023175c3a4a2f3610724bbf288e">clu</a>&amp; Cluster);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="funciones_8hh.html#ab650dae19de469f0e7231072981720fa">  125</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#ab650dae19de469f0e7231072981720fa">compactar_memoria_procesador</a>(map&lt;string,Procesador&gt;&amp; pr);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="funciones_8hh.html#a5e15cabff5f65408c250de12e684be79">  131</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="funciones_8hh.html#a5e15cabff5f65408c250de12e684be79">compactar_memoria_cluster</a>(map&lt;string,Procesador&gt;&amp; pr);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aPri_8hh_html"><div class="ttname"><a href="Pri_8hh.html">Pri.hh</a></div><div class="ttdoc">Especificació de la clase Pri.</div></div>
+<div class="ttc" id="aProcesador_8hh_html"><div class="ttname"><a href="Procesador_8hh.html">Procesador.hh</a></div><div class="ttdoc">Especificació de la clase Procesador.</div></div>
+<div class="ttc" id="afunciones_8hh_html_a02a2ab817362d27eade1a886b9c9c663"><div class="ttname"><a href="funciones_8hh.html#a02a2ab817362d27eade1a886b9c9c663">modificarrecursivo</a></div><div class="ttdeci">void modificarrecursivo(clu &amp;Cluster, map&lt; string, Procesador &gt; &amp;pr, const string &amp;s, int ni, string iz, const string &amp;comando)</div><div class="ttdoc">modifica un Cluster.</div></div>
+<div class="ttc" id="afunciones_8hh_html_a135643cf0b4d5cdca6e890cb100099b4"><div class="ttname"><a href="funciones_8hh.html#a135643cf0b4d5cdca6e890cb100099b4">configurar_cluster</a></div><div class="ttdeci">void configurar_cluster(clu &amp;Cluster, map&lt; string, Procesador &gt; &amp;pr, int n, string i)</div><div class="ttdoc">configura un Cluster.</div></div>
+<div class="ttc" id="afunciones_8hh_html_a229a34c9c598ce0522d9b24eeba12c8a"><div class="ttname"><a href="funciones_8hh.html#a229a34c9c598ce0522d9b24eeba12c8a">alta_proceso_espera</a></div><div class="ttdeci">void alta_proceso_espera(Area &amp;areap, const string &amp;comando)</div><div class="ttdoc">afegeix un proces a l'area d'espera.</div></div>
+<div class="ttc" id="afunciones_8hh_html_a22a7f6d6c93bb67fe788a9e2a86b55ef"><div class="ttname"><a href="funciones_8hh.html#a22a7f6d6c93bb67fe788a9e2a86b55ef">imprimir_area_espera</a></div><div class="ttdeci">void imprimir_area_espera(const Area &amp;areap)</div><div class="ttdoc">Imprimeix l'area d'espera.</div></div>
+<div class="ttc" id="afunciones_8hh_html_a34a3d004beacbd39c3cbbe6dbb0884a9"><div class="ttname"><a href="funciones_8hh.html#a34a3d004beacbd39c3cbbe6dbb0884a9">alta_prioridad2</a></div><div class="ttdeci">void alta_prioridad2(Area &amp;areap, const string &amp;s)</div><div class="ttdoc">afegeix una prioritat a l'area d'espera.</div></div>
+<div class="ttc" id="afunciones_8hh_html_a57696e4b76fb2a4cc2d5d54ddb0ac9d7"><div class="ttname"><a href="funciones_8hh.html#a57696e4b76fb2a4cc2d5d54ddb0ac9d7">enviar_procesos_cluster</a></div><div class="ttdeci">void enviar_procesos_cluster(map&lt; string, Procesador &gt; &amp;pr, Area &amp;areap)</div><div class="ttdoc">Envia n procesos al Cluster.</div></div>
+<div class="ttc" id="afunciones_8hh_html_a5e15cabff5f65408c250de12e684be79"><div class="ttname"><a href="funciones_8hh.html#a5e15cabff5f65408c250de12e684be79">compactar_memoria_cluster</a></div><div class="ttdeci">void compactar_memoria_cluster(map&lt; string, Procesador &gt; &amp;pr)</div><div class="ttdoc">Compacta la memoria del Cluster.</div></div>
+<div class="ttc" id="afunciones_8hh_html_a67a958d8d026e7a87132020209a11a0c"><div class="ttname"><a href="funciones_8hh.html#a67a958d8d026e7a87132020209a11a0c">Area</a></div><div class="ttdeci">map&lt; string, Pri &gt; Area</div><div class="ttdef"><b>Definition:</b> funciones.hh:19</div></div>
+<div class="ttc" id="afunciones_8hh_html_a8618450f11e21b5255adce3d38d5f145"><div class="ttname"><a href="funciones_8hh.html#a8618450f11e21b5255adce3d38d5f145">alta_prioridad</a></div><div class="ttdeci">void alta_prioridad(Area &amp;areap, const string &amp;comando)</div><div class="ttdoc">afegeix una prioritat a l'area d'espera.</div></div>
+<div class="ttc" id="afunciones_8hh_html_a86fae20432ab0d245952e64f195bbb80"><div class="ttname"><a href="funciones_8hh.html#a86fae20432ab0d245952e64f195bbb80">imprimir_prioridad</a></div><div class="ttdeci">void imprimir_prioridad(const Area &amp;areap, const string &amp;comando)</div><div class="ttdoc">Imprimeix una prioritat.</div></div>
+<div class="ttc" id="afunciones_8hh_html_a906e2f98771bbb25ea08261b59570062"><div class="ttname"><a href="funciones_8hh.html#a906e2f98771bbb25ea08261b59570062">imprimir_procesadores_cluster</a></div><div class="ttdeci">void imprimir_procesadores_cluster(const map&lt; string, Procesador &gt; &amp;pr)</div><div class="ttdoc">Imprimeix els procesadors del Cluster.</div></div>
+<div class="ttc" id="afunciones_8hh_html_a99efcc0ea55bbf2d5584f2aec5c26cbd"><div class="ttname"><a href="funciones_8hh.html#a99efcc0ea55bbf2d5584f2aec5c26cbd">baja_prioridad</a></div><div class="ttdeci">void baja_prioridad(Area &amp;areap, const string &amp;comando)</div><div class="ttdoc">elimina una prioritat de l'area d'espera.</div></div>
+<div class="ttc" id="afunciones_8hh_html_aa9a40697b57db45c4a5374ec5b53738e"><div class="ttname"><a href="funciones_8hh.html#aa9a40697b57db45c4a5374ec5b53738e">baja_proceso_procesador</a></div><div class="ttdeci">void baja_proceso_procesador(map&lt; string, Procesador &gt; &amp;pr, const string &amp;comando)</div><div class="ttdoc">elimina un proces d'un procesador.</div></div>
+<div class="ttc" id="afunciones_8hh_html_aaac064cafcd97cec3c495bcad4bb24a4"><div class="ttname"><a href="funciones_8hh.html#aaac064cafcd97cec3c495bcad4bb24a4">alta_proceso_procesador</a></div><div class="ttdeci">void alta_proceso_procesador(map&lt; string, Procesador &gt; &amp;pr, const string &amp;comando)</div><div class="ttdoc">afegeix un proces a un procesador.</div></div>
+<div class="ttc" id="afunciones_8hh_html_ab3927023175c3a4a2f3610724bbf288e"><div class="ttname"><a href="funciones_8hh.html#ab3927023175c3a4a2f3610724bbf288e">clu</a></div><div class="ttdeci">BinTree&lt; string &gt; clu</div><div class="ttdef"><b>Definition:</b> funciones.hh:18</div></div>
+<div class="ttc" id="afunciones_8hh_html_ab640dc24274481d23a1a0a7b5167d32b"><div class="ttname"><a href="funciones_8hh.html#ab640dc24274481d23a1a0a7b5167d32b">imprimir_estructura_cluster</a></div><div class="ttdeci">string imprimir_estructura_cluster(const clu &amp;Cluster)</div><div class="ttdoc">Imprimeix l'estructura dels procesadors del Cluster.</div></div>
+<div class="ttc" id="afunciones_8hh_html_ab650dae19de469f0e7231072981720fa"><div class="ttname"><a href="funciones_8hh.html#ab650dae19de469f0e7231072981720fa">compactar_memoria_procesador</a></div><div class="ttdeci">void compactar_memoria_procesador(map&lt; string, Procesador &gt; &amp;pr)</div><div class="ttdoc">Compacta la memoria d'un procesador.</div></div>
+<div class="ttc" id="afunciones_8hh_html_acab70e06c3b2bbe9a3da394419b1f1a5"><div class="ttname"><a href="funciones_8hh.html#acab70e06c3b2bbe9a3da394419b1f1a5">imprimir_procesador</a></div><div class="ttdeci">void imprimir_procesador(const map&lt; string, Procesador &gt; &amp;pr, const string &amp;comando)</div><div class="ttdoc">Imprimeix un procesador.</div></div>
+<div class="ttc" id="afunciones_8hh_html_adfbb2562c55bdc15baab315dd4873665"><div class="ttname"><a href="funciones_8hh.html#adfbb2562c55bdc15baab315dd4873665">modificar_cluster</a></div><div class="ttdeci">void modificar_cluster(clu &amp;Cluster, map&lt; string, Procesador &gt; &amp;pr, const string &amp;comando)</div><div class="ttdoc">modifica un Cluster.</div></div>
+<div class="ttc" id="afunciones_8hh_html_af165f991c8c0a18b6eef21b38a180eba"><div class="ttname"><a href="funciones_8hh.html#af165f991c8c0a18b6eef21b38a180eba">avanzar_tiempo</a></div><div class="ttdeci">void avanzar_tiempo(map&lt; string, Procesador &gt; &amp;pr, const int &amp;t)</div><div class="ttdoc">Avança t segons al Cluster.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generat per&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

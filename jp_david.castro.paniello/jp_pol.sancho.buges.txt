@@ -1,0 +1,466 @@
+Entrada Comentada:
+
+pro2 500 35 400 * * marsF 73 bun8 300 dol 100 * * cat2 200 kol 256 * z87 1000 * * * vime 15
+* *
+3 pnf404 max min
+imprimir_estructura_cluster
+imprimir_area_espera
+imprimir_procesadores_cluster
+
+/*Casos de error sencillos ordenes alta_prioridad, baja_prioridad, alta_proceso_espera,
+imprimir_prioridad i imprimir_procesador*/
+ap max
+ap mend
+bp maxim
+ape max 27 5 10
+bp max
+bp mend
+ape mend 28 90 3
+ape max 27 40 5
+ipri max
+ipri mend
+ipro cat
+
+/*Casos de error modificar_cluster: no existe el procesador, un procesador con procesos, un
+procesador con procesos i auxiliares, uno con 1 auxiliar por la derecha i otro con 1 por la
+izquierda*/
+mc cat new 50 * *
+app 35 40 10 20
+app marsF 40 10 20
+modificar_cluster 35 new 50 * *
+mc marsF new 50 * *
+mc cat2 new 50 * *
+mc kol new 50 * *
+
+/*Casos especiales a probar: Modificar un procesador que se ha añadido al modificar cluster
+i añadir un procesador que a sido eliminado por esta misma instruccion*/
+mc vime ark 130 * kra 300 hollow 70 * * knight 80 * *
+mc vime new 50 * *
+mc hollow new 50 * *
+mc dol vime 15 * *
+iec
+ipc
+
+/*Casos de error de alta_proceso_procesador con la situacion en la que se intenta añadir un
+proceso con mismo identificador que otro del procesador i que no cabe
+Además de 2 casos donde no da error: añadir sabiendo que hay varios huecos ajustados
+iguales, el hueco mas ajustado esta en una posicion mas alta*/
+app arc 79 67 15
+app ark 40 30 20
+app ark 40 3500 7
+
+app ark 20 101 20
+app ark 20 100 20
+ipro ark
+bpp ark 60
+bpp ark 40
+app knight 1 10 10
+app knight 2 10 5
+app knight 3 10 5
+app knight 4 10 10
+app knight 5 30 20
+bpp knight 4
+bpp knight 1
+ipro knight
+app knight 6 10 20
+app knight 1 10 10
+ipro knight
+/*probamos avanzar tiempo de tal manera que elimina varios procesos en sitios diferenres*/
+at 5
+ipro knight
+app knight 2 10 5
+app knight 7000 19 5
+app z87 60 5 5
+app z87 10 50 20
+ipc
+at 6
+ipro knight
+
+/* Caso especial modificar procesador que no es auxiliar de ningun otro(esto solo puede
+pasar si el cluster tiene solo 1 procesador)*/
+configurar_cluster Aa 600 * *
+mc Aa sup 600 mar 90 gal 300 * * dol 300 * * *
+iec
+mc cab vime 15 * *
+
+fin
+
+------------------------------------------------------------------------
+Entrada sin comentar:
+
+pro2 500 35 400 * * marsF 73 bun8 300 dol 100 * * cat2 200 kol 256 * z87 1000 * * * vime 15
+* *
+3 pnf404 max min
+imprimir_estructura_cluster
+imprimir_area_espera
+imprimir_procesadores_cluster
+ap max
+ap mend
+bp maxim
+ape max 27 5 10
+bp max
+bp mend
+ape mend 28 90 3
+ape max 27 40 5
+ipri max
+ipri mend
+ipro cat
+mc cat new 50 * *
+app 35 40 10 20
+app marsF 40 10 20
+modificar_cluster 35 new 50 * *
+mc marsF new 50 * *
+mc cat2 new 50 * *
+mc kol new 50 * *
+mc vime ark 130 * kra 300 hollow 70 * * knight 80 * *
+mc vime new 50 * *
+mc hollow new 50 * *
+mc dol vime 15 * *
+iec
+ipc
+app arc 79 67 15
+app ark 40 30 20
+app ark 40 3500 7
+app ark 20 101 20
+app ark 20 100 20
+ipro ark
+bpp ark 60
+bpp ark 40
+app knight 1 10 10
+app knight 2 10 5
+app knight 3 10 5
+app knight 4 10 10
+app knight 5 30 20
+bpp knight 4
+bpp knight 1
+ipro knight
+app knight 6 10 20
+app knight 1 10 10
+ipro knight
+at 5
+ipro knight
+app knight 2 10 5
+app knight 7000 19 5
+app z87 60 5 5
+app z87 10 50 20
+ipc
+at 6
+ipro knight
+configurar_cluster Aa 600 * *
+mc Aa sup 600 mar 90 gal 300 * * dol 300 * * *
+iec
+mc Aa vime 15 * *
+fin
+
+-------------------------------------------------------------
+Salida Comentada:
+
+#imprimir_estructura_cluster
+(pro2(35  )(marsF(bun8(dol  )(cat2(kol (z87  )) ))(vime  )))
+#imprimir_area_espera
+max
+0 0
+min
+0 0
+pnf404
+0 0
+#imprimir_procesadores_cluster
+35
+bun8
+cat2
+dol
+kol
+marsF
+pro2
+vime
+z87
+
+/*Todos estos dan diferentes errores en varias instruciones de varios tipos*/
+#ap max
+error: ya existe prioridad
+#ap mend
+#bp maxim
+error: no existe prioridad
+#ape max 27
+#bp max
+error: prioridad con procesos
+#bp mend
+#ape mend 28
+error: no existe prioridad
+#ape max 27
+error: ya existe proceso
+#ipri max
+27 5 10
+0 0
+#ipri mend
+error: no existe prioridad
+#ipro cat
+error: no existe procesador
+
+/*En la situacion en la que se producen 2 errores al intentar modificar marsF el cual tiene procesos i auxiliares solo se imprime un error, en este caso tiene prioridad el error de tener procesos. Los errores con solo un auxiliar son iguales a si tuviera 2 auxiliares*/
+#mc cat
+error: no existe procesador
+#app 35 40
+#app marsF 40
+#modificar_cluster 35
+error: procesador con procesos
+#mc marsF
+error: procesador con procesos
+#mc cat2
+error: procesador con auxiliares
+#mc kol
+error: procesador con auxiliares
+
+/*La nueva parte del cluster elimina el procesador anterior por lo que podemos volver a poner un procesador eliminado, ademas la zona nueva es parte del cluster por lo que tambien podemos modificar-la*/
+#mc vime
+#mc vime
+error: no existe procesador
+#mc hollow
+#mc dol
+#iec
+(pro2(35  )(marsF(bun8(vime  )(cat2(kol (z87  )) ))(ark (kra(new  )(knight  )))))
+#ipc
+35
+0 40 10 20
+ark
+bun8
+cat2
+knight
+kol
+kra
+marsF
+0 40 10 20
+new
+pro2
+vime
+z87
+
+/*probamos varios errores de alta_proceso_procesador entre ellos la situacion donde hay dos errores i tiene prioridad el de que el proceso ya existe ademas de eliminar varios procesos con at para dejar huecos i probar a insertar en diferentes situaciones*/
+#app arc 79
+error: no existe procesador
+#app ark 40
+#app ark 40
+error: ya existe proceso
+#app ark 20
+error: no cabe proceso
+#app ark 20
+#ipro ark
+0 40 30 20
+30 20 100 20
+#bpp ark 60
+error: no existe proceso
+#bpp ark 40
+#app knight 1
+#app knight 2
+#app knight 3
+#app knight 4
+#app knight 5
+#bpp knight 4
+#bpp knight 1
+#ipro knight
+10 2 10 5
+20 3 10 5
+40 5 30 20
+#app knight 6
+#app knight 1
+#ipro knight
+0 6 10 20
+10 2 10 5
+20 3 10 5
+30 1 10 10
+40 5 30 20
+#at 5
+#ipro knight
+0 6 10 15
+30 1 10 5
+40 5 30 15
+#app knight 2
+#app knight 7000
+#app z87 60
+#app z87 10
+#ipc
+35
+0 40 10 15
+ark
+30 20 100 15
+bun8
+cat2
+knight
+0 6 10 15
+10 7000 19 5
+30 1 10 5
+40 5 30 15
+70 2 10 5
+kol
+kra
+marsF
+0 40 10 15
+new
+pro2
+vime
+z87
+0 60 5 5
+5 10 50 20
+#at 6
+#ipro knight
+0 6 10 9
+40 5 30 9
+
+/*modificar el cluster cuando solo hay un procesador da el mismo resultado que configurar un nuevo cluster*/
+#configurar_cluster
+#mc Aa
+#iec
+(sup(mar(gal  )(dol  )) )
+#mc Aa
+error: no existe procesador
+-----------------------------------------------------------------------
+Salida sin Comentar:
+
+#imprimir_estructura_cluster
+(pro2(35  )(marsF(bun8(dol  )(cat2(kol (z87  )) ))(vime  )))
+#imprimir_area_espera
+max
+0 0
+min
+0 0
+pnf404
+0 0
+#imprimir_procesadores_cluster
+35
+bun8
+cat2
+dol
+kol
+marsF
+pro2
+vime
+z87
+#ap max
+error: ya existe prioridad
+#ap mend
+#bp maxim
+error: no existe prioridad
+#ape max 27
+#bp max
+error: prioridad con procesos
+#bp mend
+#ape mend 28
+error: no existe prioridad
+#ape max 27
+error: ya existe proceso
+#ipri max
+27 5 10
+0 0
+#ipri mend
+error: no existe prioridad
+#ipro cat
+error: no existe procesador
+#mc cat
+error: no existe procesador
+#app 35 40
+#app marsF 40
+#modificar_cluster 35
+error: procesador con procesos
+#mc marsF
+error: procesador con procesos
+#mc cat2
+error: procesador con auxiliares
+#mc kol
+error: procesador con auxiliares
+#mc vime
+#mc vime
+error: no existe procesador
+#mc hollow
+#mc dol
+#iec
+(pro2(35  )(marsF(bun8(vime  )(cat2(kol (z87  )) ))(ark (kra(new  )(knight  )))))
+#ipc
+35
+0 40 10 20
+ark
+bun8
+cat2
+knight
+kol
+kra
+marsF
+0 40 10 20
+new
+pro2
+vime
+z87
+#app arc 79
+error: no existe procesador
+#app ark 40
+#app ark 40
+error: ya existe proceso
+#app ark 20
+error: no cabe proceso
+#app ark 20
+#ipro ark
+0 40 30 20
+30 20 100 20
+#bpp ark 60
+error: no existe proceso
+#bpp ark 40
+#app knight 1
+#app knight 2
+#app knight 3
+#app knight 4
+#app knight 5
+#bpp knight 4
+#bpp knight 1
+#ipro knight
+10 2 10 5
+20 3 10 5
+40 5 30 20
+#app knight 6
+#app knight 1
+#ipro knight
+0 6 10 20
+10 2 10 5
+20 3 10 5
+30 1 10 10
+40 5 30 20
+#at 5
+#ipro knight
+0 6 10 15
+30 1 10 5
+40 5 30 15
+#app knight 2
+#app knight 7000
+#app z87 60
+#app z87 10
+#ipc
+35
+0 40 10 15
+ark
+30 20 100 15
+bun8
+cat2
+knight
+0 6 10 15
+10 7000 19 5
+30 1 10 5
+40 5 30 15
+70 2 10 5
+kol
+kra
+marsF
+0 40 10 15
+new
+pro2
+vime
+z87
+0 60 5 5
+5 10 50 20
+#at 6
+#ipro knight
+0 6 10 9
+40 5 30 9
+#configurar_cluster
+#mc Aa
+#iec
+(sup(mar(gal  )(dol  )) )
+#mc Aa
+error: no existe procesador
